@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using aspnet_core_playground.ViewModels.Manage;
 
 namespace aspnet_core_playground.Controllers
 {
@@ -30,6 +31,17 @@ namespace aspnet_core_playground.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Phone(IndexViewModel indexViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Index();
+            }
+
+            return RedirectToAction("About");
         }
     }
 }
